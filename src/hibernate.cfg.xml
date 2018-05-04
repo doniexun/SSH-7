@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--数据库连接相关信息交给Spring进行管理，此处不进行配置-->
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/ssh</property>-->
+        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+         <!--<property name="connection.username">root</property>-->
+         <!--<property name="connection.password">toor</property>-->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+        <!--自动升成表-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!--数据库方言-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!--把映射文件放到核心配置文件中-->
+        <mapping resource="com/codingfanlt/entity/User.hbm.xml"/>
+
+    </session-factory>
+</hibernate-configuration>

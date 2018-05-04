@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <!--测试Action strtus2标准写法，现在要交给Spring进行管理
+<package name="demo" extends="struts-default" namespace="/">
+    <action name="userAction" class="com.codingfanlt.action.UserAction"></action>
+</package>  -->
+
+    <!--测试Action 交给Spring进行管理 class属性里边不写action的全路径，写的话Action对象将被Spring和Struts2分别创建（两次）-->
+    <!--class内写Spring里边配置的Bean ID值（前提条件是必须有struts2-spring-plugin的jar包）-->
+    <package name="demo" extends="struts-default" namespace="/">
+        <action name="userAction" class="userAction"></action>
+    </package>
+</struts>

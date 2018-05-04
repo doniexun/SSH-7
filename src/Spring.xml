@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--配置C3P0连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--注入属性值-->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/ssh"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="toor"></property>
+    </bean>
+    <!--将SessionFactory的创建交给Spring进行管理，在服务器启动时加载Hibernate的SessionFactory并初始化数据表-->
+    <!--LocalSessionFactoryBean是Spring封装好的加载SessionFactory的代码（加载配置等）-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!--注入数据库配置信息-->
+        <property name="dataSource" ref="dataSource"></property>
+        <!--注入（指定）Hibernate核心配置文件路径-->
+        <property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
+    </bean>
+
+    <!--配置Hibernate事务-->
+    <!--配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <!--注入SessionFactory-->
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <!--开启事务注解-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+    <!--配置Action对象-->
+    <!--scope="prototype" 多实例对象-->
+    <bean id="userAction" class="com.codingfanlt.action.UserAction" scope="prototype">
+        <!--注入Service-->
+        <property name="userService" ref="userService"></property>
+    </bean>
+    <!--创建Service对象-->
+    <bean id="userService" class="com.codingfanlt.service.UserService">
+        <!--注入userDao(将实现类注入进接口)-->
+        <property name="userDao" ref="userDaoImpl"></property>
+    </bean>
+    <!--创建UserDao接口实现类的对象-->
+    <bean id="userDaoImpl" class="com.codingfanlt.dao.UserDaoImpl">
+        <!--注入HibernateTemplate对象-->
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <!--创建HibernateTemplate对象-->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <!--注入SessionFactory-->
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+
+</beans>
