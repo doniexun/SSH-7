@@ -815,27 +815,52 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="205" parent="5" name="t_user">
+    <table id="205" parent="5" name="t1_user">
       <Engine>MyISAM</Engine>
     </table>
-    <column id="206" parent="205" name="uid">
+    <table id="206" parent="5" name="t_user">
+      <Engine>MyISAM</Engine>
+    </table>
+    <column id="207" parent="205" name="uid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="207" parent="205" name="username">
+    <column id="208" parent="205" name="username">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="208" parent="205" name="address">
+    <column id="209" parent="205" name="address">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="209" parent="205" name="PRIMARY">
+    <key id="210" parent="205" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>uid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="211" parent="206" name="uid">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="212" parent="206" name="username">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="213" parent="206" name="address">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="214" parent="206" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>uid</ColNames>
       <Primary>1</Primary>

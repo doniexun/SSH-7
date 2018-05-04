@@ -4,6 +4,7 @@
     <data-source source="LOCAL" name="ssh@localhost" uuid="964b00c9-eff8-44fe-ad49-d54b6b1c6374">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
+      <remarks>D:\Code\IdeaProjects\SSH\src\hibernate.cfg.xml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/ssh</jdbc-url>
       <driver-properties>

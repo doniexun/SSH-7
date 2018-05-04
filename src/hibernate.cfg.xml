@@ -2,17 +2,23 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!--本文件中的内容已经在Spring这种进行配置，可以删除，这里暂不删除-->
 <hibernate-configuration>
     <session-factory>
         <!--数据库连接相关信息交给Spring进行管理，此处不进行配置-->
-        <!--<property name="connection.url">jdbc:mysql://localhost:3306/ssh</property>-->
-        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
-         <!--<property name="connection.username">root</property>-->
-         <!--<property name="connection.password">toor</property>-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/ssh</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+         <property name="connection.username">root</property>
+         <property name="connection.password">toor</property>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
-        <!--自动升成表-->
+
+        <!--打开SQL控制台输出-->
+        <property name="hibernate.show_sql">true</property>
+        <!--格式化SQL输出-->
+        <property name="hibernate.format_sql">true</property>
+        <!--自动生成表-->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <!--数据库方言-->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>

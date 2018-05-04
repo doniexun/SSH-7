@@ -17,7 +17,32 @@
         <!--注入数据库配置信息-->
         <property name="dataSource" ref="dataSource"></property>
         <!--注入（指定）Hibernate核心配置文件路径-->
-        <property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
+        <!--将Hibernate配置文件整合进Spring，将不再需要此配置-->
+        <!--<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>-->
+
+        <!--将Hibernate配置文件整合进Spring-->
+        <!--通过注入配置Hibernate的基本信息（数据库方言，自动升级表等）-->
+
+        <property name="hibernateProperties">
+            <props>
+                <!--打开SQL控制台输出-->
+                <prop key="hibernate.show_sql">true</prop>
+                <!--格式化SQL输出-->
+                <prop key="hibernate.format_sql">true</prop>
+                <!--自动生成表-->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!--数据库方言-->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+            </props>
+        </property>
+        <!--通过注入配置Hibernate映射文件的引入-->
+        <property name="mappingResources">
+            <!--指定映射文件的路径（多个）-->
+            <list>
+                <!--引入映射文件-->
+                <value>com/codingfanlt/entity/User.hbm.xml</value>
+            </list>
+        </property>
     </bean>
 
     <!--配置Hibernate事务-->
