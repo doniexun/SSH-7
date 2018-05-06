@@ -5,7 +5,7 @@
       <configuration>
         <datasource-map>
           <unit-entry name="hibernate.cfg.xml" />
-          <unit-entry name="sessionFactory" value="964b00c9-eff8-44fe-ad49-d54b6b1c6374" />
+          <unit-entry name="sessionFactory" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
@@ -34,6 +34,7 @@
       <configuration>
         <fileset id="fileset" name="Spring" removed="false">
           <file>file://$MODULE_DIR$/src/Spring.xml</file>
+          <file>file://$MODULE_DIR$/src/com/codingfanlt/action/UserActionConfig.xml</file>
         </fileset>
       </configuration>
     </facet>
